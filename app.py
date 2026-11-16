@@ -35,7 +35,7 @@ def get_closing_prices(ticker: str) -> np.ndarray:
         raise ValueError(f"No data found for ticker {ticker}")
 
     # Take the Close column, drop missing values, make a 1-D float array
-    closes = df["Close"].dropna().to_numpy(dtype=float)
+    closes = df["Close"].dropna().to_numpy(dtype=float).flatten()
 
     if closes.size < 20:
         raise ValueError("Not enough data to build a simple trend")
